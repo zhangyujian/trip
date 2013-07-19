@@ -7,21 +7,55 @@ block content
                 h3=title
         form.form-horizontal(action="/add",method="post",enctype="multipart/form-data",accept-charset="utf-8")
             .control-group
-                label.control-label 产品标题
+                label.control-label 景点标题
                 .controls
-                    input(type="text",placeholder="产品标题",name="title")
+                    input(type="text",placeholder="景点标题",name="title")
             .control-group
-                label.control-label 产品简介
+                label.control-label 城市
                 .controls
-                    input(type="text",placeholder="产品简介",name="content")
+                    input(type="text",placeholder="城市",name="city")
             .control-group
-                label.control-label 产品价格
+                label.control-label 面积
                 .controls
-                    input(type="text",placeholder="产品价格",name="price")
+                    input(type="text",placeholder="面积",name="area")
+            .control-group
+                label.control-label 经纬度
+                .controls
+                    input(type="text",placeholder="经纬度",name="geography")
+            .control-group
+                label.control-label 气候
+                .controls
+                    input(type="text",placeholder="气候",name="weather")
+            .control-group
+                label.control-label 景点级别
+                .controls
+                    input(type="text",placeholder="景点级别",name="grade")
+            .control-group
+                label.control-label 门票价格
+                .controls
+                    input(type="text",placeholder="门票价格",name="price")
+            .control-group
+                label.control-label 创建时间
+                .controls
+                    input(type="text",placeholder="创建时间",name="buildtime")
+            .control-group
+                label.control-label 景点类别
+                .controls
+                    input(type="text",placeholder="景点类别",name="category")
+            .control-group
+                label.control-label 景点介绍
+                .controls
+                    textarea(type="text",placeholder="景点介绍",name="content")
             .control-group
                 label.control-label 产品图片
                 .controls
-                    input(type="file",placeholder="产品图片",name="thumbnail")
+                    input.file_img(type="text", name="file_img",style="display:none;")
+                    div#img_box.img
+                    input#file_upload(type="file", name="file_upload")
+            .control-group
+                label.control-label 是否公开
+                .controls
+                    textarea(type="text",placeholder="是否公开",name="publish")
             .control-group
                 .controls
                     button.btn(type="submit") 确定
