@@ -13,11 +13,16 @@ block content
             .control-group
                 label.control-label 城市
                 .controls
-                    input(type="text",placeholder="城市",name="city")
+                    select#s1(name="province")
+                    select#s2(name="city")
             .control-group
                 label.control-label 面积
                 .controls
-                    input(type="text",placeholder="面积",name="area")
+                    .input-append
+                        input#prependedInput(type="text",placeholder="面积",name="area")
+                        span.add-on 
+                            | m
+                            sup 2
             .control-group
                 label.control-label 经纬度
                 .controls
@@ -25,15 +30,30 @@ block content
             .control-group
                 label.control-label 气候
                 .controls
-                    input(type="text",placeholder="气候",name="weather")
+                    select(name="weather")
+                        option 温带大陆性气候
+                        option 温带季风气候
+                        option 热带季风气候
+                        option 热带草原气候
+                        option 热带沙漠气候
+                        option 温带海洋性气候
+                        option 地中海气候
             .control-group
                 label.control-label 景点级别
                 .controls
-                    input(type="text",placeholder="景点级别",name="grade")
+                    select(name="grade")
+                        option 选择级别
+                        option AAAAA
+                        option AAAA
+                        option AAA
+                        option AA
+                        option A
             .control-group
                 label.control-label 门票价格
                 .controls
-                    input(type="text",placeholder="门票价格",name="price")
+                    .input-prepend
+                        span.add-on ￥
+                        input#prependedInput(type="text",placeholder="门票价格",name="price")
             .control-group
                 label.control-label 创建时间
                 .controls
@@ -45,17 +65,22 @@ block content
             .control-group
                 label.control-label 景点介绍
                 .controls
-                    textarea(type="text",placeholder="景点介绍",name="content")
+                    textarea.input-xlarge(rows="5",placeholder="景点介绍",name="content")
             .control-group
-                label.control-label 产品图片
+                label.control-label 景点图片
                 .controls
                     input.file_img(type="text", name="file_img",style="display:none;")
                     div#img_box.img
                     input#file_upload(type="file", name="file_upload")
             .control-group
-                label.control-label 是否公开
+                label.control-label 发布
                 .controls
-                    textarea(type="text",placeholder="是否公开",name="publish")
+                    input(type="radio",name="publish",value="true",checked)
+                    | 是
+                    input(type="radio",name="publish",value="false")
+                    | 否
             .control-group
                 .controls
                     button.btn(type="submit") 确定
+    script(src="/js/jquery-doubleselect.js", type="text/javascript")
+    script(src="/js/select.js", type="text/javascript")

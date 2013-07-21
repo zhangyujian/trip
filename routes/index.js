@@ -1,5 +1,6 @@
 require('../db');
 var mongoose = require('mongoose'),
+    config = require('../config').config,
     fs = require('fs'), //引用处理文件功能
     crypto = require('crypto'), //引用md5加密
     Util = require('../libs/util'),
@@ -28,14 +29,26 @@ exports.upload = function (req, res) {
     imgname = fileDesc.Filedata.name,
     path = fileDesc.Filedata.path,
     name = path.replace(config.datapath, ''),
-    imgurl = 'http://localhost:3002/data/img/' + name;
+    imgurl = 'http://localhost:3003/data/img/' + name;
   res.send(imgurl);
 };
 
 exports.index = function(req, res){
-  res.render('index', { 
-    title: '首页'
-  });
+  Scenic.count()
+    .exec(function(err, count){
+      Scenic.find()
+        .skip(8*parseInt(req.query.p?req.query.p:0))
+        .limit(8)
+        .sort({ date: 'desc' })
+        .exec(function(err, Scenics){
+          res.render('index', {
+            title: '景点列表',
+            Scenics: Scenics,
+            req: req,
+            count: count
+          });
+        });
+    });
 };
 
 exports.add = function(req, res){
@@ -44,5 +57,29 @@ exports.add = function(req, res){
       title: '添加'
     });
   }else if(req.method === 'POST'){
+    if (req.body.title) {
+      var imgs = req.body.file_img.split(',');
+      new Scenic({
+          title   : req.body.title,
+          province : req.body.province,
+          city : req.body.city,
+          area  : req.body.area,
+          geography   : req.body.geography,
+          weather     : req.body.weather,
+          grade     : req.body.grade,
+          price     : req.body.price,
+          buildtime     : req.body.buildtime,
+          category     : req.body.category,
+          content     : req.body.content,
+          img     : arrRemoveTail(imgs),
+          publish     : req.body.publish,
+          date    : Date.now()
+      }).save(function (err) {
+          if(err) throw err;
+            res.redirect('/');
+          });
+    }else{
+      res.redirect('/');
+    }
   };
 };

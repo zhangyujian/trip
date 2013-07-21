@@ -11,13 +11,13 @@ html
         link(rel='stylesheet', href='/uploadify/uploadify.css')
         script(src="/js/jquery.js", type="text/javascript")
         script(src="/js/bootstrap.min.js", type="text/javascript")
-        script(src="/js/common.js", type="text/javascript")
         script(src="/uploadify/jquery.uploadify.js")
+        script(src="/js/common.js", type="text/javascript")
         script.
             $(function() {
                 $('#file_upload').uploadify({
                     'swf'     : '/uploadify/uploadify.swf',
-                    'uploader' : '/admin/upload',
+                    'uploader' : '/upload',
                     'formData':{},
                     'cancelImg':'/uploadify/uploadify-cancel.png',
                     'onUploadSuccess' : function(file, data, response) {

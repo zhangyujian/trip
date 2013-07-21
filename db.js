@@ -8,6 +8,7 @@ mongoose.connect(config.db);
 var ScenicSchema = new Schema({  
     id         :    { type : Number,default:0 },
     title      :    { type : String },
+    province   :    { type : String },
     city       :    { type : String },
     area       :    { type : String },
     geography  :    { type : String },
@@ -20,7 +21,7 @@ var ScenicSchema = new Schema({
     img        :    [String],
     publish    :    { type: Boolean, default: false },
     date       :    { type: Date, default: Date.now },
-    son        :    [{ name: String, content: String, date: Date }], 
+    son        :    [{ son_name: String, son_content: String, son_img: [String] }], 
 });
 
 mongoose.model('Scenic', ScenicSchema);

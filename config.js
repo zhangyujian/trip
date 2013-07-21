@@ -1,3 +1,5 @@
+var path = require('path');
+
 exports.config = {
 	debug: true,
 	name: 'Trip',
@@ -7,5 +9,6 @@ exports.config = {
 	//Service
 	port: 3003,
 	db: 'mongodb://localhost/trip',
-	session_secret: 'Trip'
+	session_secret: 'Trip',
+	datapath: path.join(__dirname, '/public/data/img'),
 };

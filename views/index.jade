@@ -1,4 +1,32 @@
 extends layout
 
 block content
-    h1 index
+    .span12
+        .page-title
+            .opts.pull-right
+                a(href="/add")
+                    i.icon-plus
+                    | 添加景点
+            h3=title
+        table.table.table-bordered.table-striped
+            tr
+                th 公布
+                th 城市
+                th 气候
+                th 名称
+                th(width="230") 内容
+                th(width="68") 操作
+            each item in Scenics
+                tr
+                    td #{item.publish}
+                    td #{item.city}
+                    td #{item.weather}
+                    td
+                        a(href="#",target="_blacnk",title="#{item.title}") #{item.title}
+                    td !{item.content}
+                    td.operate
+                        a.btn.btn-mini(href="/admin/edit/#{item._id}")
+                            i.icon-edit
+                        a.btn.btn-danger.btn-mini(href="/admin/destroy/#{item._id}")
+                            i.icon-remove.icon-white
+        include pagination
