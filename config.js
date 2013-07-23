@@ -7,7 +7,7 @@ exports.config = {
 	keywords: '',
 	favicon: '/public/favicon.ico',//favicon.ico 路径
 	//Service
-	port: 3003,
+	port: 3004,
 	db: 'mongodb://localhost/trip',
 	session_secret: 'Trip',
 	datapath: path.join(__dirname, '/public/data/img'),
