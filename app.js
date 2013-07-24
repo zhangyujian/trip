@@ -41,11 +41,14 @@ app.get('/', routes.index);
 app.get('/add', routes.add);
 app.post('/add', routes.add);
 app.post('/upload', routes.upload);
+app.get('/destroy/:id', routes.destroy);
+app.get( '/edit/:id', routes.edit);
+app.post( '/update/:id', routes.update);
 //config 渲染到模板
 app.locals({
   config:config
 });
 
 app.listen(config.port, function(){
-  console.log("Express server listening on port 3003");
+  console.log("Express server listening on port 3004");
 });

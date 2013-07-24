@@ -25,8 +25,8 @@ block content
                         a(href="#",target="_blacnk",title="#{item.title}") #{item.title}
                     td !{item.content}
                     td.operate
-                        a.btn.btn-mini(href="/admin/edit/#{item._id}")
+                        a.btn.btn-mini(href="/edit/#{item._id}")
                             i.icon-edit
-                        a.btn.btn-danger.btn-mini(href="/admin/destroy/#{item._id}")
+                        a.btn.btn-danger.btn-mini(href="/destroy/#{item._id}")
                             i.icon-remove.icon-white
         include pagination

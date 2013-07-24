@@ -29,7 +29,7 @@ exports.upload = function (req, res) {
     imgname = fileDesc.Filedata.name,
     path = fileDesc.Filedata.path,
     name = path.replace(config.datapath, ''),
-    imgurl = 'http://localhost:3003/data/img/' + name;
+    imgurl = 'http://localhost:3004/data/img/' + name;
   res.send(imgurl);
 };
 
@@ -82,4 +82,48 @@ exports.add = function(req, res){
       res.redirect('/');
     }
   };
+};
+
+exports.edit = function( req, res, next ){
+  Scenic.findById( req.params.id, function ( err, Scenic ){
+    if( err ) return next( err );
+    res.render( 'edit', {
+      title   : '编辑景点',
+      Scenic : Scenic
+    });
+  });
+};
+
+exports.update = function( req, res, next ){
+  Scenic.findById( req.params.id, function ( err, Scenic){
+    Scenic.title = req.body.title;
+    Scenic.province = req.body.province;
+    Scenic.city = req.body.city;
+    Scenic.area = req.body.area;
+    Scenic.geography = req.body.geography;
+    Scenic.weather = req.body.weather;
+    Scenic.grade = req.body.grade;
+    Scenic.price = req.body.price;
+    Scenic.buildtime = req.body.buildtime;
+    Scenic.category = req.body.category;
+    Scenic.publish = req.body.publish;
+    Scenic.content = req.body.content;
+    var imgs = req.body.file_img.split(',');
+    if(Scenic.img != req.body.file_img + ','){
+      Scenic.img = arrRemoveTail(imgs);
+    }
+    Scenic.save( function ( err, Scenic ){
+      if( err ) return next( err );
+      res.redirect('/');
+    });
+  });
+};
+
+exports.destroy = function ( req, res, next ){
+  Scenic.findById( req.params.id, function ( err, Scenic ){
+    Scenic.remove( function ( err, Scenic ){
+      if( err ) return next( err );
+      res.redirect( '/' );
+    });
+  });
 };

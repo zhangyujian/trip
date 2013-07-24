@@ -1,0 +1,90 @@
+extends layout
+
+block content
+    .span10
+        .page-title
+            .opts
+                h3=title
+        form.form-horizontal(action="/update/#{Scenic._id}",method="post",enctype="multipart/form-data",accept-charset="utf-8")
+            .control-group
+                label.control-label 景点标题
+                .controls
+                    input(type="text",placeholder="#{Scenic.title}",value="#{Scenic.title}",name="title")
+            .control-group
+                label.control-label 城市
+                .controls
+                    select#s1(name="province")
+                    select#s2(name="city")
+            .control-group
+                label.control-label 面积
+                .controls
+                    .input-append
+                        input#prependedInput(type="text",placeholder="#{Scenic.area}",value="#{Scenic.area}",name="area")
+                        span.add-on 
+                            | m
+                            sup 2
+            .control-group
+                label.control-label 经纬度
+                .controls
+                    input(type="text",placeholder="#{Scenic.geography}",value="#{Scenic.geography}",name="geography")
+            .control-group
+                label.control-label 气候
+                .controls
+                    select(name="weather")
+                        option 温带大陆性气候
+                        option 温带季风气候
+                        option 热带季风气候
+                        option 热带草原气候
+                        option 热带沙漠气候
+                        option 温带海洋性气候
+                        option 地中海气候
+            .control-group
+                label.control-label 景点级别
+                .controls
+                    select(name="grade")
+                        option 选择级别
+                        option AAAAA
+                        option AAAA
+                        option AAA
+                        option AA
+                        option A
+            .control-group
+                label.control-label 门票价格
+                .controls
+                    .input-prepend
+                        span.add-on ￥
+                        input#prependedInput(type="text",placeholder="#{Scenic.price}",value="#{Scenic.price}",name="price")
+            .control-group
+                label.control-label 创建时间
+                .controls
+                    input(type="text",placeholder="#{Scenic.buildtime}",value="#{Scenic.buildtime}",name="buildtime")
+            .control-group
+                label.control-label 景点类别
+                .controls
+                    input(type="text",placeholder="#{Scenic.category}",value="#{Scenic.category}",name="category")
+            .control-group
+                label.control-label 景点介绍
+                .controls
+                    textarea.input-xlarge(rows="5",placeholder="#{Scenic.content}",value="#{Scenic.content}",name="content")
+            .control-group
+                label.control-label 景点图片
+                .controls
+                    input.file_img(type="text", name="file_img",value="#{Scenic.img},",style="display:none;")
+                    div#img_box.img
+                        - if ( Scenic.img.length )
+                            - Scenic.img.forEach(function(item){
+                                img(src=item, style="width: 100px; height: 100px;")
+                            - })
+                    input#file_upload(type="file", name="file_upload")
+            .control-group
+                label.control-label 发布
+                .controls
+                    input(type="radio",name="publish",value="true",checked)
+                    | 是
+                    input(type="radio",name="publish",value="false")
+                    | 否
+            .control-group
+                .controls
+                    button.btn(type="submit") 确定
+    script(src="/js/jquery-doubleselect.js", type="text/javascript")
+    script(src="/js/select.js", type="text/javascript")
