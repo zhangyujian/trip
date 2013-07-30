@@ -16,3 +16,17 @@ block content
                 th 名称
                 th(width="230") 内容
                 th(width="68") 操作
+            each item in Scenics
+                tr
+                    td #{item.publish}
+                    td #{item.city}
+                    td #{item.weather}
+                    td
+                        a(href="#",target="_blacnk",title="#{item.title}") #{item.title}
+                    td !{item.content}
+                    td.operate
+                        a.btn.btn-mini(href="/edit/#{item._id}")
+                            i.icon-edit
+                        a.btn.btn-danger.btn-mini(href="/destroy/#{item._id}")
+                            i.icon-remove.icon-white
+        include pagination

@@ -38,7 +38,7 @@ app.configure('production', function(){
 
 // Routes
 app.get('/', routes.index);
-//app.get('/list', routes.list);
+app.get('/list', routes.list);
 app.get('/add', routes.add);
 app.post('/add', routes.add);
 app.post('/upload', routes.upload);
