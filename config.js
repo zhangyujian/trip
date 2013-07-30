@@ -8,7 +8,7 @@ exports.config = {
 	favicon: '/public/favicon.ico',//favicon.ico 路径
 	//Service
 	port: 3004,
-	db: 'mongodb://yujian:zhang@127.0.0.1/trip',
+	db: 'mongodb://yujian:zhang@121.199.29.125:27017/trip',
 	session_secret: 'Trip',
 	datapath: path.join(__dirname, '/public/data/img'),
 };
