@@ -59,7 +59,7 @@ exports.list = function(req, res){
         .limit(8)
         .sort({ date: 'desc' })
         .exec(function(err, Scenics){
-          res.send(Scenics);
+          res.jsonp(Scenics);
         });
     });
 };
