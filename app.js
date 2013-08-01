@@ -5,6 +5,7 @@
 
 var express     = require('express')
   , routes = require('./routes')
+  , approutes = require('./routes/approutes')
   , path        = require('path')
   , flash       = require('connect-flash')
   , config      = require('./config').config;
@@ -38,13 +39,15 @@ app.configure('production', function(){
 
 // Routes
 app.get('/', routes.index);
-app.get('/list', routes.list);
 app.get('/add', routes.add);
 app.post('/add', routes.add);
 app.post('/upload', routes.upload);
 app.get('/destroy/:id', routes.destroy);
 app.get( '/edit/:id', routes.edit);
 app.post( '/update/:id', routes.update);
+// AppToutes
+app.get('/list', approutes.list);
+app.get('/detail/:id', approutes.detail);
 //config 渲染到模板
 app.locals({
   config:config

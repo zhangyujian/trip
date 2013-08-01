@@ -51,19 +51,6 @@ exports.index = function(req, res){
     });
 };
 
-exports.list = function(req, res){
-  Scenic.count()
-    .exec(function(err, count){
-      Scenic.find()
-        .skip(8*parseInt(req.query.p?req.query.p:0))
-        .limit(8)
-        .sort({ date: 'desc' })
-        .exec(function(err, Scenics){
-          res.jsonp(Scenics);
-        });
-    });
-};
-
 exports.add = function(req, res){
   if(req.method === 'GET'){
     res.render('add', { 

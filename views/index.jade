@@ -22,7 +22,7 @@ block content
                     td #{item.city}
                     td #{item.weather}
                     td
-                        a(href="#",target="_blacnk",title="#{item.title}") #{item.title}
+                        a(href="detail/#{item._id}",target="_blacnk",title="#{item.title}") #{item.title}
                     td !{item.content}
                     td.operate
                         a.btn.btn-mini(href="/edit/#{item._id}")
